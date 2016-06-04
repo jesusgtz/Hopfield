@@ -139,7 +139,7 @@ class Hopfield {
             System.out.print(".."); 
 
             // Aplicacion de la funcion escalon con desplazamiento 0 
-            Matriz.producto(Ent,W,1,4,4,S); 
+            Matriz.producto(Ent,W,1,N,N,S); 
             /* Transformacion de los valores de la salida S a valores discretos 1, -1 
             si S[i,j] < 0 entonces S[i,j]= -1 
             si S[i,j] >= 0 entonces S[i,j] = +1 */ 
@@ -151,13 +151,16 @@ class Hopfield {
                     S[0][j]= 1; 
 
             // Comparacion de las salidas en t y (t+1) 
-            if (Matriz.iguales(Ent,S,1,4)) 
+            if (Matriz.iguales(Ent,S,1,N)) 
                 igual=true; 
             else 
-            // La salida es la nueva entrada 
-            for (j=0;j<N;j++) 
-                Ent[0][j] = S[0][j]; 
-        } while (!igual);
+                // La salida es la nueva entrada
+                for (j=0;j<N;j++) {
+                    Ent[0][j] = S[0][j];
+                    //System.out.print("" + Ent[0][j] + "\t");
+                }
+            //System.out.println("\n");
+        } while (igual == false);
 
         // Impresión de la salida 
         System.out.println(" "); 

@@ -30,8 +30,24 @@ public class Matriz {
     // Devuelve en P la matriz producto de A y B 
     // Af : numero de filas de A 
     // Bc : numero de columnas de B 
-    // cf: numero de columnas y filas de A y B 
+    // cf: numero de columnas y filas de A y B, respectivamente 
     public static void producto(int [][]A,int [][]B, int Af, int Bc, int cf,int [][]P) { 
+        System.out.println("***** PRODUCTO *****");
+        
+        System.out.println("Matriz A: ");
+        for(int x=0; x<Af; x++) {
+            for(int y=0; y<cf; y++)
+                System.out.print(A[x][y] + "\t");
+            System.out.println("");
+        }
+        
+        System.out.println("Matriz B: ");
+        for(int x=0; x<cf; x++) {
+            for(int y=0; y<Bc; y++)
+                System.out.print(B[x][y] + "\t");
+            System.out.println("");
+        }
+        
         int i,j,k; 
             for (i=0;i<Af;i++) 
                 for (j=0;j<Bc;j++) 
@@ -45,7 +61,7 @@ public class Matriz {
         int i,j; 
         for (i=0;i<f;i++) 
             for (j=0;j<c;j++) 
-                OP[i][j]=-A[i][j]; 
+                OP[i][j]= A[i][j] * -1; 
     }
 
     // Devuelve en S la matriz suma de A y B 
@@ -58,13 +74,12 @@ public class Matriz {
     }
 
     public static boolean iguales(int [][]A,int [][]B, int f, int c) { 
-        int i,j; 
-        boolean igual=true; 
+        int i,j;  
         for (i=0;i<f;i++) 
             for (j=0;j<c;j++) 
                 if (A[i][j]!= B[i][j]) 
-                    return (false); 
-        return (igual); 
+                    return false; 
+        return true; 
     }
 
     // Devuelve la posicion del minimo de la matriz A de una fila 
